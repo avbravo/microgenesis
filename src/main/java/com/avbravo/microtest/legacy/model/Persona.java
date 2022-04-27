@@ -4,6 +4,7 @@
  */
 package com.avbravo.microtest.legacy.model;
 
+import com.jmoordbcoregenesis.annotations.entity.Id;
 import java.io.Serializable;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,7 @@ import lombok.Data;
 @Data
 @Builder
 public class Persona implements Serializable {
+    @Id
     private String name;
     private String id;
 

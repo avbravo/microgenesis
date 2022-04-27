@@ -5,8 +5,8 @@
 package com.avbravo.microtest.controller;
 
 //import jakarta.annotation.PostConstruct;
-import com.avbravo.jmoordbcoregenesis.util.ClassUtil;
-import com.avbravo.jmoordbcoregenesis.util.FacesMessagesUtil;
+import com.jmoordbcoregenesis.util.ClassUtil;
+import com.jmoordbcoregenesis.util.FacesMessagesUtil;
 import com.avbravo.microtest.legacy.model.Persona;
 import com.avbravo.microtest.legacy.repository.PersonaRepositoryLegacy;
 import jakarta.annotation.PostConstruct;
