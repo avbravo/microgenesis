@@ -2,13 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
  */
-package com.avbravo.microtest.development.annotation.controller;
+package com.avbravo.microcoregenesis.controller;
 
 //import jakarta.annotation.PostConstruct;
 import com.jmoordbcoregenesis.util.ClassUtil;
 import com.jmoordbcoregenesis.util.FacesMessagesUtil;
-import com.avbravo.microtest.development.annotation.model.Country;
-import com.avbravo.microtest.development.annotation.repository.CountryRepository;
+import com.avbravo.microcoregenesis.model.Country;
 import com.jmoordbcoregenesis.annotations.Query;
 import com.jmoordbcoregenesis.util.AnnotationUtil;
 import jakarta.annotation.PostConstruct;
@@ -24,6 +23,7 @@ import java.util.Optional;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.avbravo.microcoregenesis.repository.CountryInterfaceRepository;
 
 /**
  *
@@ -32,10 +32,10 @@ import org.slf4j.LoggerFactory;
 @Named(value = "countryController")
 @SessionScoped
 @Data
-public class CountryController implements Serializable {
+public class CountryInterfaceController implements Serializable {
 
     // <editor-fold defaultstate="collapsed" desc="field">
-    private static final Logger LOG = LoggerFactory.getLogger(CountryController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CountryInterfaceController.class);
     private List<Country> countryList = new ArrayList<>();
     private Country country = new Country();
     private static final long serialVersionUID = 1L;
@@ -48,7 +48,7 @@ public class CountryController implements Serializable {
     // <editor-fold defaultstate="collapsed" desc="@Inject">
 
     @Inject
-    CountryRepository countryRepository;
+    CountryInterfaceRepository countryRepository;
 //    @Inject
 //    AdrressRepo adreessRepo;
     // </editor-fold>
@@ -56,7 +56,7 @@ public class CountryController implements Serializable {
     /**
      * Creates a new instance of IndexController
      */
-    public CountryController() {
+    public CountryInterfaceController() {
     }
 
     @PostConstruct
@@ -96,6 +96,12 @@ public class CountryController implements Serializable {
     }
 //  
 
+    // <editor-fold defaultstate="collapsed" desc="String findById()">
+/**
+ * Busca en el repository mediante el Id
+ * 
+ * @return 
+ */
     public String findById() {
         try {
             Optional<Country> countryOptional = countryRepository.findById("pa");
@@ -110,6 +116,7 @@ public class CountryController implements Serializable {
         }
         return "";
     }
+        // </editor-fold>
     public String findByCountry() {
         try {
              countryList = countryRepository.findByCountry("panama");
@@ -198,7 +205,7 @@ public class CountryController implements Serializable {
     
      public String readQueryOfQueryAnnotation() {
         try {
-            Optional<Query> queryOptional = AnnotationUtil.queryAnnotationReader(CountryRepository.class, ClassUtil.nameOfMethod());
+            Optional<Query> queryOptional = AnnotationUtil.queryAnnotationReader(CountryInterfaceRepository.class, ClassUtil.nameOfMethod());
             if(queryOptional.isPresent()){
                 Query query = queryOptional.get();
                   FacesMessagesUtil.showInfo(query.value(), "Query");

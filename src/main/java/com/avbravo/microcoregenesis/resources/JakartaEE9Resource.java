@@ -1,4 +1,4 @@
-package com.avbravo.microtest.resources;
+package com.avbravo.microcoregenesis.resources;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

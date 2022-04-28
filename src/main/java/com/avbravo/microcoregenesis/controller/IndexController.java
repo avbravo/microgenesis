@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
  */
-package com.avbravo.microtest.controller;
+package com.avbravo.microcoregenesis.controller;
 
 //import jakarta.annotation.PostConstruct;
 import com.jmoordbcoregenesis.util.ClassUtil;
 import com.jmoordbcoregenesis.util.FacesMessagesUtil;
-import com.avbravo.microtest.legacy.model.Persona;
-import com.avbravo.microtest.legacy.repository.PersonaRepositoryLegacy;
+import com.avbravo.microcoregenesis.model.Persona;
+import com.avbravo.microcoregenesis.repository.PersonaRepositoryLegacy;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
