@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
  */
-package com.avbravo.microcoregenesis.controller;
+package com.avbravo.microcoregenesis.interfacerepository;
 
 //import jakarta.annotation.PostConstruct;
 import com.jmoordbcoregenesis.util.ClassUtil;
@@ -23,7 +23,7 @@ import java.util.Optional;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.avbravo.microcoregenesis.repository.CountryInterfaceRepository;
+import com.mongodb.client.MongoClient;
 
 /**
  *
@@ -32,10 +32,10 @@ import com.avbravo.microcoregenesis.repository.CountryInterfaceRepository;
 @Named(value = "countryController")
 @SessionScoped
 @Data
-public class CountryInterfaceController implements Serializable {
+public class InterfaceController implements Serializable {
 
     // <editor-fold defaultstate="collapsed" desc="field">
-    private static final Logger LOG = LoggerFactory.getLogger(CountryInterfaceController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(InterfaceController.class);
     private List<Country> countryList = new ArrayList<>();
     private Country country = new Country();
     private static final long serialVersionUID = 1L;
@@ -46,9 +46,10 @@ public class CountryInterfaceController implements Serializable {
     List<String> fieldsWithReferencedList = new ArrayList<>();
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="@Inject">
-
+//    @Inject
+//    MongoClient mongoClient;
     @Inject
-    CountryInterfaceRepository countryRepository;
+    InterfaceRepository countryInterfaceRepository;
 //    @Inject
 //    AdrressRepo adreessRepo;
     // </editor-fold>
@@ -56,7 +57,7 @@ public class CountryInterfaceController implements Serializable {
     /**
      * Creates a new instance of IndexController
      */
-    public CountryInterfaceController() {
+    public InterfaceController() {
     }
 
     @PostConstruct
@@ -82,7 +83,7 @@ public class CountryInterfaceController implements Serializable {
     public String findAll() {
 
         try {
-            countryList = countryRepository.findAll();
+            countryList = countryInterfaceRepository.findAll();
             if (countryList == null || countryList.isEmpty()) {
                     FacesMessagesUtil.showWarn("No hay registros", "Advertencia");
              
@@ -104,7 +105,7 @@ public class CountryInterfaceController implements Serializable {
  */
     public String findById() {
         try {
-            Optional<Country> countryOptional = countryRepository.findById("pa");
+            Optional<Country> countryOptional = countryInterfaceRepository.findById("pa");
             if (countryOptional.isPresent()) {
                 country = countryOptional.get();
                 FacesMessagesUtil.showInfo("Si encontro registro", "Mensaje");
@@ -119,7 +120,7 @@ public class CountryInterfaceController implements Serializable {
         // </editor-fold>
     public String findByCountry() {
         try {
-             countryList = countryRepository.findByCountry("panama");
+             countryList = countryInterfaceRepository.findByCountry("panama");
             if (countryList == null || countryList.isEmpty()) {
                 FacesMessagesUtil.showInfo("Si encontro registro", "Mensaje");
             } else {
@@ -205,7 +206,7 @@ public class CountryInterfaceController implements Serializable {
     
      public String readQueryOfQueryAnnotation() {
         try {
-            Optional<Query> queryOptional = AnnotationUtil.queryAnnotationReader(CountryInterfaceRepository.class, ClassUtil.nameOfMethod());
+            Optional<Query> queryOptional = AnnotationUtil.queryAnnotationReader(InterfaceRepository.class, ClassUtil.nameOfMethod());
             if(queryOptional.isPresent()){
                 Query query = queryOptional.get();
                   FacesMessagesUtil.showInfo(query.value(), "Query");

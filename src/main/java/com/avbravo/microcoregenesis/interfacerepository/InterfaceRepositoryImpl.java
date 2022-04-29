@@ -2,20 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.avbravo.microcoregenesis.repository;
+package com.avbravo.microcoregenesis.interfacerepository;
 
-import com.avbravo.microcoregenesis.repository.CountryInterfaceRepository;
 import com.jmoordbcoregenesis.util.ClassUtil;
 import com.jmoordbcoregenesis.util.FacesMessagesUtil;
 import com.avbravo.microcoregenesis.model.Country;
 import com.jmoordbcoregenesis.annotations.Query;
+import com.jmoordbcoregenesis.producer.mongodb.MongoClientManagerProducer;
 import com.jmoordbcoregenesis.util.AnnotationUtil;
 import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.eq;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.bson.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -23,16 +29,16 @@ import java.util.Optional;
  */
 //@ApplicationScoped
 @Stateless
-public class CountryInterfaceRepositoryImpl implements CountryInterfaceRepository {
-
-//    @Inject
-//    MongoClient mongoClient;
-    
+public class InterfaceRepositoryImpl implements InterfaceRepository {
+//
+    @Inject
+    MongoClient mongoClient;
+    private static final Logger LOG = LoggerFactory.getLogger(InterfaceRepositoryImpl.class);
     // <editor-fold defaultstate="collapsed" desc="Optional<Country> findById(String id)">
     @Override
     public Optional<Country> findById(String id) {
         try {
-            Optional<Query> queryOptional = AnnotationUtil.queryAnnotationReader(CountryInterfaceRepository.class, ClassUtil.nameOfMethod());
+            Optional<Query> queryOptional = AnnotationUtil.queryAnnotationReader(InterfaceRepository.class, ClassUtil.nameOfMethod());
             if (queryOptional.isPresent()) {
                 Query query = queryOptional.get();
                 System.out.println("query es " + query.value() + " ");
@@ -54,14 +60,21 @@ public class CountryInterfaceRepositoryImpl implements CountryInterfaceRepositor
         List<Country> list = new ArrayList<>();
         try {
 //             Optional<Query> queryOptional = AnnotationUtil.queryAnnotationReader(this.getClass(), ClassUtil.nameOfMethod());
-            Optional<Query> queryOptional = AnnotationUtil.queryAnnotationReader(CountryInterfaceRepository.class, ClassUtil.nameOfMethod());
+            Optional<Query> queryOptional = AnnotationUtil.queryAnnotationReader(InterfaceRepository.class, ClassUtil.nameOfMethod());
             if (queryOptional.isPresent()) {
                 Query query = queryOptional.get();
                 System.out.println("query es " + query.value() + " !!");
             } else {
                 System.out.println("No se encontro la anotacion ");
             }
+            System.out.println("---> voy a buscar");
+       MongoDatabase database  = mongoClient.getDatabase("microgenesis");
+            System.out.println("--> en la coleccion");
+         MongoCollection<Document> collection = database.getCollection("country");
+        Document doc = collection.find(eq("title", "Back to the Future")).first();
+        System.out.println(doc.toJson());
         } catch (Exception e) {
+            LOG.error(e.getLocalizedMessage());
             FacesMessagesUtil.showError(e.getLocalizedMessage(), ClassUtil.nameOfClassAndMethod());
         }
 
@@ -74,7 +87,7 @@ public class CountryInterfaceRepositoryImpl implements CountryInterfaceRepositor
     public List<Country> findByCountry(String country) {
         List<Country> list = new ArrayList<>();
         try {
-            Optional<Query> queryOptional = AnnotationUtil.queryAnnotationReader(CountryInterfaceRepository.class, ClassUtil.nameOfMethod());
+            Optional<Query> queryOptional = AnnotationUtil.queryAnnotationReader(InterfaceRepository.class, ClassUtil.nameOfMethod());
             if (queryOptional.isPresent()) {
                 Query query = queryOptional.get();
                 System.out.println("query es " + query.value() + " !!");

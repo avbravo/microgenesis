@@ -19,7 +19,7 @@
                 <p:growl id="growl"/>
                 <p:card style="width: 25rem; margin-bottom: 2em">
                     <f:facet name="title">
-                        INTERFACE REPOSITORY COUNTRY
+                     JAVA DRIVER
                     </f:facet>
  <f:facet name="footer">
                         <p:commandButton value="Index" 
@@ -49,43 +49,19 @@ public interface CountryInterfaceRepository {
                     <p>Ingrese los datos de Country
                         y ejecute las operaciones!</p>
                     <p> <p:outputLabel value="Id"/>
-                        <p:inputText value="#{countryController.country.id}"/></p>
+                        <p:inputText value="#{javaDriverController.country.id}"/></p>
                     <p> <p:outputLabel value="name"/>
-                        <p:inputText value="#{countryController.country.country}"/></p>
+                        <p:inputText value="#{javaDriverController.country.country}"/></p>
 
                     <f:facet name="footer">
                         <p:panelGrid columns="3">
                              <p:commandButton icon="pi pi-check" value="findById()"
-                                         action="#{countryController.findById()}"
-                                         styleClass="ui-button-secondary" style="margin-left: .5em"
-                                         update=":form:growl"/>
-                        <p:commandButton icon="pi pi-check" value="findAll()"
-                                         action="#{countryController.findAll()}"
-                                         styleClass="ui-button-secondary" style="margin-left: .5em"
-                                         update=":form:growl"/>
-                        <p:commandButton icon="pi pi-check" value="findByCountry()"
-                                         action="#{countryController.findByCountry()}"
+                                         action="#{javaDriverController.findById()}"
                                          styleClass="ui-button-secondary" style="margin-left: .5em"
                                          update=":form:growl"/>
                         
                         
-                        <p:commandButton icon="pi pi-check" value="@Id fields"
-                                         action="#{countryController.fieldsWithId()}"
-                                         styleClass="ui-button-secondary" style="margin-left: .5em"
-                                         update=":form:growl"/>
-                        <p:commandButton icon="pi pi-check" value="@Embedded fields"
-                                         action="#{countryController.fieldsWithEmbbedded()}"
-                                         styleClass="ui-button-secondary" style="margin-left: .5em"
-                                         update=":form:growl"/>
-                        <p:commandButton icon="pi pi-check" value="@Referenced fields"
-                                         action="#{countryController.fieldsWithReferenced()}"
-                                         styleClass="ui-button-secondary" style="margin-left: .5em"
-                                         update=":form:growl"/>
-                        <p:commandButton icon="pi pi-check" value="readQueryOfQueryAnnotation()"
-                                         action="#{countryController.readQueryOfQueryAnnotation()}"
-                                         styleClass="ui-button-secondary" style="margin-left: .5em"
-                                         update=":form:growl"/>
-                            
+                      
                         </p:panelGrid>
                        
                       
@@ -93,7 +69,7 @@ public interface CountryInterfaceRepository {
                 </p:card>
 
                 <p:card style="width: 25em">
-                    <p:dataTable value="#{countryController.countryList}"
+                    <p:dataTable value="#{javaDriverController.countryList}"
                                  lazy="false"
                                  var="item" id="datatable">
                     <p:column headerText="id">

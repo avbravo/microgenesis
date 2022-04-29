@@ -21,20 +21,20 @@ public class Country {
     @Id
     private String id;
     private String country;
-    @Embedded
-    private String planeta;
-    @Referenced(field = "idgalaxy", collection = "galaxia", repository = "GalaxiaRepository")
-    private String galaxia;
+//    @Embedded
+//    private String planeta;
+//    @Referenced(field = "idgalaxy", collection = "galaxia", repository = "GalaxiaRepository")
+//    private String galaxia;
 
     public Country() {
     }
 
-    public Country(String id, String country, String planeta, String galaxia) {
-        this.id = id;
-        this.country = country;
-        this.planeta = planeta;
-        this.galaxia = galaxia;
-    }
+//    public Country(String id, String country, String planeta, String galaxia) {
+//        this.id = id;
+//        this.country = country;
+//        this.planeta = planeta;
+//        this.galaxia = galaxia;
+//    }
 
     
     

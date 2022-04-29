@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.avbravo.microcoregenesis.repository;
+package com.avbravo.microcoregenesis.interfacerepository;
 
 import com.avbravo.microcoregenesis.model.Country;
 import com.avbravo.microcoregenesis.model.Persona;
@@ -16,7 +16,7 @@ import java.util.Optional;
  * @author avbravo
  */
 @Repository(forEntity = Country.class)
-public interface CountryInterfaceRepository {
+public interface InterfaceRepository {
     
     public void save(Country country);
 

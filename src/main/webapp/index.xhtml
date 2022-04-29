@@ -26,9 +26,16 @@
                         <p:inputText value="#{indexController.mensaje}"/>
                     </p>
                     <f:facet name="footer">
-                        <p:commandButton value="Saludar" 
+                        <p:panelGrid columns="3">
+                              <p:commandButton value="Saludar" 
                                          action="#{indexController.saludar()}"
                                          styleClass="ui-button-secondary" style="margin-left: .5em"
+                                         update=":form:growl"/>
+                              
+                              
+                        <p:commandButton value="JavaDriver(Country)" 
+                                         action="javadriver"
+                                         styleClass="ui-button-primary" style="margin-left: .5em"
                                          update=":form:growl"/>
                         <p:commandButton value="InterfaceRepository(Country)" 
                                          action="interfacerepository"
@@ -38,6 +45,8 @@
                                          action="legacy"
                                          styleClass="ui-button-danger" style="margin-left: .5em"
                                          update=":form:growl"/>
+                        </p:panelGrid>
+                      
                     </f:facet>
 
                 </p:card>
