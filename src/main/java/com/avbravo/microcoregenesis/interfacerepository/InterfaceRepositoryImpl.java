@@ -67,12 +67,7 @@ public class InterfaceRepositoryImpl implements InterfaceRepository {
             } else {
                 System.out.println("No se encontro la anotacion ");
             }
-            System.out.println("---> voy a buscar");
-       MongoDatabase database  = mongoClient.getDatabase("microgenesis");
-            System.out.println("--> en la coleccion");
-         MongoCollection<Document> collection = database.getCollection("country");
-        Document doc = collection.find(eq("title", "Back to the Future")).first();
-        System.out.println(doc.toJson());
+          
         } catch (Exception e) {
             LOG.error(e.getLocalizedMessage());
             FacesMessagesUtil.showError(e.getLocalizedMessage(), ClassUtil.nameOfClassAndMethod());

@@ -4,8 +4,6 @@
  */
 package com.avbravo.microcoregenesis.model;
 
-import com.avbravo.jmoordbcdi.annotations.Referenced;
-import com.jmoordbcoregenesis.annotations.Embedded;
 import com.jmoordbcoregenesis.annotations.entity.Id;
 import lombok.Builder;
 import lombok.Data;
