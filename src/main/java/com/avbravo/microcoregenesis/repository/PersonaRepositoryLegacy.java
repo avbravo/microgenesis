@@ -5,7 +5,7 @@
 package com.avbravo.microcoregenesis.repository;
 
 import com.avbravo.microcoregenesis.model.Persona;
-import com.jmoordbcoregenesis.legacy.RepositoryDecoratorLegacy;
+import com.jmoordbcoregenesis.decorator.RepositoryDecoratorImpl;
 import jakarta.enterprise.context.ApplicationScoped;
 
 //import jakarta.enterprise.context.ApplicationScoped;
@@ -18,7 +18,7 @@ import jakarta.inject.Named;
 @ApplicationScoped
 @Named
 
-public class PersonaRepositoryLegacy extends RepositoryDecoratorLegacy<Persona, String>{
+public class PersonaRepositoryLegacy extends RepositoryDecoratorImpl<Persona, String>{
 
     
 
