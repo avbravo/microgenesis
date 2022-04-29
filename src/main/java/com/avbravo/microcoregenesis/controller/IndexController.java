@@ -8,7 +8,7 @@ package com.avbravo.microcoregenesis.controller;
 import com.jmoordbcoregenesis.util.ClassUtil;
 import com.jmoordbcoregenesis.util.FacesMessagesUtil;
 import com.avbravo.microcoregenesis.model.Persona;
-import com.avbravo.microcoregenesis.repository.PersonaRepositoryLegacy;
+import com.avbravo.microcoregenesis.decorator.PersonaRepositoryDecorator;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
@@ -37,7 +37,7 @@ public class IndexController implements Serializable {
     @Inject
     PageController pageController;
     @Inject
-    PersonaRepositoryLegacy perrsonaRepositoryLegacy;
+    PersonaRepositoryDecorator perrsonaRepositoryLegacy;
 //    @Inject
 //    AdrressRepo adreessRepo;
     // </editor-fold>

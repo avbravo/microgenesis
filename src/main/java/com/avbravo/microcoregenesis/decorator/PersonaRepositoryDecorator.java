@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.avbravo.microcoregenesis.repository;
+package com.avbravo.microcoregenesis.decorator;
 
 import com.avbravo.microcoregenesis.model.Persona;
 import com.jmoordbcoregenesis.decorator.RepositoryDecoratorImpl;
@@ -18,7 +18,7 @@ import jakarta.inject.Named;
 @ApplicationScoped
 @Named
 
-public class PersonaRepositoryLegacy extends RepositoryDecoratorImpl<Persona, String>{
+public class PersonaRepositoryDecorator extends RepositoryDecoratorImpl<Persona, String>{
 
     
 
