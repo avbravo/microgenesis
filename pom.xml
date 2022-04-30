@@ -162,6 +162,12 @@
             <artifactId>microprofile-config-api</artifactId>
             <version>3.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-core</artifactId>
+            <version>4.6.0</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <finalName>microcoregenesis</finalName>

@@ -5,7 +5,6 @@
 package com.avbravo.microcoregenesis.model;
 
 import com.jmoordbcoregenesis.annotations.entity.Id;
-import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -13,18 +12,8 @@ import lombok.Data;
  * @author avbravo
  */
 @Data
-@Builder
-public class Animal {
-   @Id
-   private Long id;
-   private String name;
-
-    public Animal() {
-    }
-
-    public Animal(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-   
+public class Pais {
+    @Id
+    private String id;
+    private String name;
 }

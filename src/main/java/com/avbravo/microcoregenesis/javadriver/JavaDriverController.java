@@ -29,47 +29,47 @@ import org.slf4j.LoggerFactory;
 @Named
 @ViewScoped
 @Data
-public class JavaDriverController implements Serializable{
+public class JavaDriverController implements Serializable {
+
     // <editor-fold defaultstate="collapsed" desc="fields()">
-      private static final Logger LOG = LoggerFactory.getLogger(InterfaceController.class);
-      Country country = new Country();
-      List<Country> countryList = new ArrayList<>();
-    
+    private static final Logger LOG = LoggerFactory.getLogger(InterfaceController.class);
+    Country country = new Country();
+    List<Country> countryList = new ArrayList<>();
+
     // </editor-fold>
-      
-      // <editor-fold defaultstate="collapsed" desc="@Inject">
-     @Inject
-     JavaDriverRepository javaDriverRepository;
+    // <editor-fold defaultstate="collapsed" desc="@Inject">
+    @Inject
+    JavaDriverRepository javaDriverRepository;
     // </editor-fold>
-      
-      @PostConstruct
+
+    @PostConstruct
     public void init() {
         try {
-           
+
         } catch (Exception e) {
             LOG.error("error invoking getter method");
             FacesMessagesUtil.showInfo(e.getLocalizedMessage(), ClassUtil.nameOfClassAndMethod());
         }
 
     }
-      @PreDestroy
+
+    @PreDestroy
     public void preDestroy() {
         try {
-           
+
         } catch (Exception e) {
             LOG.error("error invoking getter method");
             FacesMessagesUtil.showInfo(e.getLocalizedMessage(), ClassUtil.nameOfClassAndMethod());
         }
 
     }
-    
-    
-      // <editor-fold defaultstate="collapsed" desc="String findById()">
-/**
- * Busca en el repository mediante el Id
- * 
- * @return 
- */
+
+    // <editor-fold defaultstate="collapsed" desc="String findById()">
+    /**
+     * Busca en el repository mediante el Id
+     *
+     * @return
+     */
     public String findById() {
         try {
             Optional<Country> countryOptional = javaDriverRepository.findById(country.getId());
@@ -84,7 +84,6 @@ public class JavaDriverController implements Serializable{
         }
         return "";
     }
-        // </editor-fold>
-    
-    
+    // </editor-fold>
+
 }
